@@ -9,7 +9,7 @@
 </div>
 {% if request.user.is_authenticated %}
     {% for job in jobs %}
-        <li>{{ job.role }} - {{ job.company }} - {{ job.created_at }}</li>
+        <li>{{ job.role }} - {{ job.company }} - {{ job.created_at }} - Candidaturas: {{ job.applicants_count }}</li>
         {% if job.owner == request.user.username %}
             <a href="{% url 'edit_job' job.id %}">Edit</a>
             <a href="{% url 'delete_job' job.id %}">Deletar</a>

@@ -21,12 +21,10 @@ class Job(models.Model):
     ed_level = models.CharField(max_length=1, choices=ED_LEVEL_CHOICES, default='1')
     salary = models.CharField(max_length=1, choices=SALARY_CHOICES, default='1')
     created_at = models.DateTimeField(auto_now_add=True)
+    applicants_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.role + ' ' + self.owner
-    
-    def get_applications(self):
-        return JobApplication.objects.filter(job_opening=self)
     
 class JobApplication(models.Model):
     ED_LEVEL_CHOICES = [
@@ -40,7 +38,7 @@ class JobApplication(models.Model):
     applicant_first_name = models.CharField(max_length=255)
     applicant_email = models.CharField(max_length=255)
     applicant_experience = models.TextField()
-    applicant_salary_epec = models.DecimalField(max_digits=10, decimal_places=2)
+    applicant_salary_expec = models.DecimalField(max_digits=10, decimal_places=2)
     applicant_ed_level = models.CharField(max_length=1, choices=ED_LEVEL_CHOICES, default='1')
     appplicant_match = models.IntegerField()
     job_opening = models.ForeignKey(Job,on_delete=models.CASCADE)

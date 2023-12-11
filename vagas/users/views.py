@@ -5,10 +5,13 @@ from django.contrib import messages
 
 def login_user(request):
     if request.method == 'POST':
+
+        # autenticar usuário
         email = request.POST["email"]
         password = request.POST["password"]
         user = authenticate(request, username=email, password=password)
         if user is not None:
+            #se o usuário é valido faz login
             login(request, user)
             messages.success(request,'Sucesso!')
             return redirect('job_list')
@@ -25,6 +28,8 @@ def logout_user(request):
 
 def create_user(request):
     if request.method == 'POST':
+
+        # cria usuário customizado com campo booleano de empresa
         print(request.POST)
         username = request.POST['username']
         first_name = request.POST['first_name']
@@ -32,7 +37,7 @@ def create_user(request):
         company = request.POST['company'] == 'yes'
 
         user = CustomUser.objects.create_user(username=username, first_name=first_name, password=password, company=company)
-
+        
         if user is not None:
             messages.success(request,'Sucesso!')
             return redirect('Login')
