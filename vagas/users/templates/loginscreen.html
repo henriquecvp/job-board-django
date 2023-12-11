@@ -1,0 +1,20 @@
+<h2>Log In</h2>
+<div class="container"> 
+  {% if messages %}
+    {% for message in messages %} 
+      {{ message }}
+    {% endfor %} 
+  {% endif %}
+</div>
+<form method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <label for="EmailInput">Email</label>
+      <input type="email" class="form-control" name="email">
+    </div>
+    <div class="form-group">
+      <label for="PasswordImput">Senha</label>
+      <input type="password" class="form-control" name="password">
+    </div>
+  <button type="submit">Log In</button>
+</form>

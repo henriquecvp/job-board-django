@@ -1,0 +1,28 @@
+<h2>Sign Up</h2>
+<div class="container"> 
+  {% if messages %}
+    {% for message in messages %} 
+      {{ message }}
+    {% endfor %} 
+  {% endif %}
+</div>
+<form method="post">
+  {% csrf_token %}
+    <div class="form-group">
+      <label for="NameInput">Nome: </label>
+      <input type="text" class="form-control" name="first_name">
+    <div class="form-group">
+      <label for="EmailInput">Email: </label>
+      <input type="email" class="form-control" name="username">
+    </div>
+    <div class="form-group">
+      <label for="PasswordInput">Senha: </label>
+      <input type="password" class="form-control" name="password">
+    </div>
+    <div class="form-group">
+      <label>Sou: </label>
+      <input type="radio" name="company" value="yes"> Empresa
+      <input type="radio" name="company" value="no"> Candidato
+    </div>
+  <button type="submit">Sign Up</button>
+</form>

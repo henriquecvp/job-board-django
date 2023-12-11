@@ -1,0 +1,6 @@
+<h2>{{ job.role }} - {{ job.company }}</h2>
+
+<h3>Candidatos:</h3>
+{% for application in applications %}
+    <li>{{ application.applicant_first_name}} - {{ application.applicant_experience }} - {{ application.applicant_ed_level }} - {{ application.applicant_salary_expec }} - {{ application.appplicant_match }} - {{ application.application_date }}</li>
+{% endfor %}

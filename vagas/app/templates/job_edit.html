@@ -1,0 +1,14 @@
+
+<h2>Editar Vaga</h2>
+<div class="container"> 
+    {% if messages %}
+      {% for message in messages %} 
+        {{ message }}
+      {% endfor %} 
+    {% endif %}
+</div>
+<form method="post" action="{% url 'edit_job' job.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>

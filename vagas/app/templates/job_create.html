@@ -1,0 +1,14 @@
+
+<h2>Criar Nova Vaga</h2>
+<div class="container"> 
+    {% if messages %}
+      {% for message in messages %} 
+        {{ message }}
+      {% endfor %} 
+    {% endif %}
+</div>
+<form method="post" action="{% url 'job_create' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Salvar</button>
+</form>

@@ -1,0 +1,22 @@
+
+<h2>Lista de Vagas</h2>
+<div class="container"> 
+    {% if messages %}
+      {% for message in messages %} 
+        {{ message }}
+      {% endfor %} 
+    {% endif %}
+</div>
+{% if request.user.is_authenticated %}
+    {% for job in jobs %}
+        <li>{{ job.role }} - {{ job.company }} - {{ job.created_at }}</li>
+        {% if job.owner == request.user.username %}
+            <a href="{% url 'edit_job' job.id %}">Edit</a>
+            <a href="{% url 'delete_job' job.id %}">Deletar</a>
+            <a href="{% url 'job_detail' job.id %}">Ver</a>
+        {% endif %}
+        {% if not request.user.company%}
+        <a href="{% url 'apply_for_job' job.id %}">Candidatar</a>
+        {% endif %}
+    {% endfor %}
+{% endif %}
